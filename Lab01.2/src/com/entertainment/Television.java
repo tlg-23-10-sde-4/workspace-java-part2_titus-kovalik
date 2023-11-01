@@ -43,30 +43,47 @@ public class Television {
         this.volume = volume;
     }
 
-    @Override
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || this.getClass() != obj.getClass()) return false;
+//        Television that = (Television) obj;
+//        return getVolume() == that.getVolume() && Objects.equals(getBrand(), that.getBrand());
+//    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getBrand(), getVolume());
+//    }
+
+        @Override
     public int hashCode() {
+
         //this is a poorly written hash function, because it can easily yield "hash collisions."
         //A hash collision is when a "different" object has the same hash code (just by coincident).
-//        return getBrand().length() + getVolume(); <--- sucks
+        //return getBrand().length() + getVolume(); //<--- sucks
         return Objects.hash(getBrand(), getVolume()); // This one is better
     }
 
+                        //[This is almost always what an equals method check will look like for sets
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-        if (obj instanceof Television) {
+        if (obj != null && this.getClass() == obj.getClass()); {
             Television other = (Television) obj;
+        if (this.getClass() == obj.getClass()) { // This is an exact check
 
             result = Objects.equals(this.getBrand(), other.getBrand()) && //null-safe check
                     this.getVolume() == other.getVolume();
+            }
         }
-
         return result;
     }
+
+
     public String toString() {
         return getClass().getSimpleName() + " Brand: " + getBrand() + ", volume: " + getVolume() +
                 ", current channel:" + getCurrentChannel() + ".";
     }
-
 
 }

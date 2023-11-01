@@ -15,14 +15,9 @@ public class TelevisionClient {
         System.out.println("tva.equals(tvb): " + tvA.equals(tvB));
         System.out.println();
 
-//        System.out.println(tvA.hashCode()); //796533847
-//        System.out.println(tvB.hashCode()); //1449621165
-//        System.out.println();
-
         Set<Television> tvs = new HashSet<>();
         tvs.add(tvA);
         tvs.add(tvB); // should be rejected as a duplicate
         System.out.println("The size of the set is: " + tvs.size());
-
     }
 }
