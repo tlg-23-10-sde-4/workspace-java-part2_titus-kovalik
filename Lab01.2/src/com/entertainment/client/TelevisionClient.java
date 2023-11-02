@@ -3,6 +3,7 @@ package com.entertainment.client;
 import com.entertainment.Television;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,8 +12,8 @@ public class TelevisionClient {
 
         Television tvA = new Television("Sony", 50);
         Television tvB = new Television("Sony", 50);
-        Television tvC = new Television("LG", 55);
-        Television tvD = new Television("Samsung", 40);
+        Television tvC = new Television("Sony", 52);
+        Television tvD = new Television("Sony", 12);
 
         System.out.println("tva==tvb: " + (tvA==tvB));
         System.out.println("tva.equals(tvb): " + tvA.equals(tvB));
@@ -25,5 +26,8 @@ public class TelevisionClient {
         tvs.add(tvD);
 
         System.out.println("The size of the set is: " + tvs.size());
+        for (Television tv : tvs) {
+            System.out.println(tv);
+        }
     }
 }

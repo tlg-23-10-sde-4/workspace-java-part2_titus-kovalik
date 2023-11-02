@@ -1,11 +1,17 @@
 package com.entertainment;
 
 import java.util.Objects;
-
+/*
+ * To be consistent with .equals, whatever fields we use for the equals and hashcode,
+ * we must use the same fields for natural order.
+ *
+ *  That means we'll switch to a primary sort key "Brand" and when tied on brand, we will break the tie
+ *  with a secondary sort key with volume
+ */
 public class Television implements Comparable<Television> {
     private String brand;
     private int volume;
-    private Tuner tuner = new Tuner();
+    private final Tuner tuner = new Tuner();
 
     //ctors
     public Television(){}
@@ -82,7 +88,13 @@ public class Television implements Comparable<Television> {
 
     @Override
     public int compareTo(Television other) {
-            return CharSequence.compare(this.getBrand(), other.getBrand());
+           int result = this.getBrand().compareTo(other.getBrand());
+
+           if (result == 0) {
+               result = Integer.compare(this.getVolume(), other.getVolume());
+           }
+
+           return result;
         }
 
 
