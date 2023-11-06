@@ -6,7 +6,7 @@
  * Copyright LearningPatterns Inc.
  */
 
-package com.javatunes.catalog.test;
+package com.javatunes.catalog.testMain;
 
 import com.javatunes.catalog.InMemoryCatalog;
 import com.javatunes.catalog.MusicCategory;
@@ -33,16 +33,17 @@ class InMemoryCatalogTest {
         //Task method tests
         //testFindSelfTitled();
         //testFindCheapRock();
-        //testGenreFinder();
+        testGenreFinder();
         //testFindAverage();
         //testHasGenre();
-        testGenreAvrg(MusicCategory.POP);
+        //testGenreAvrg();
     }
 
-    private static void testGenreAvrg(MusicCategory Pop) {
-        InMemoryCatalog catalog = new InMemoryCatalog();
-        System.out.println("The average price in this genre is: " + MusicCategory.POP);
-    }
+//    private static void testGenreAvrg() {
+//        InMemoryCatalog catalog = new InMemoryCatalog();
+//        double genreAvrg = catalog.genreAvrg(MusicCategory.POP);
+//        System.out.println("The average price in this genre is: " + catalog.genreAvrg());
+//    }
 
     private static void testHasGenre() {
         InMemoryCatalog catalog = new InMemoryCatalog();
@@ -69,7 +70,9 @@ class InMemoryCatalogTest {
     }
 
     private static void testFindSelfTitled() {
-        //todo
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        dump(catalog.findSelfTitled());
+        System.out.println(catalog.findSelfTitled());
     }
 
     private static void testFindById() {

@@ -21,6 +21,7 @@ class DuckRacerTest {
         racer.win(Reward.DEBIT_CARD);
         racer.win(Reward.DEBIT_CARD);
 
+
         System.out.println(rewards); // this will still show four. it doesn't read through
 
     }

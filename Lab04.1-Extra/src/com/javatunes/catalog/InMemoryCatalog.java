@@ -99,7 +99,9 @@ public final class InMemoryCatalog implements Catalog {
                 result.add(item);
             }
         }
+        System.out.println(result.size());
         return result;
+
     }
 
     /**
@@ -133,18 +135,21 @@ public final class InMemoryCatalog implements Catalog {
     /**
      * TASK: find the average price of items in the specified genre (MusicCategory).
      */
-    public double genreAvrg(MusicCategory category) {
-        double genreAvrg = 0;
+    public Collection<MusicItem> genreAvrg(MusicCategory category) {
         Collection<MusicItem> result = new ArrayList<>();
         for (MusicItem item : catalogData) {
             if (item.getMusicCategory().equals(category)) {
                 result.add(item);
             }
         }
-        for (MusicItem item : result) {
-             genreAvrg += item.getPrice();
-        }
-        return genreAvrg/result.size();
+        return result;
+    }
+
+
+    public double genreAvrgPrice(){
+        double genreAvrgPrice = 0;
+
+        return genreAvrgPrice;
     }
 
 
@@ -169,7 +174,6 @@ public final class InMemoryCatalog implements Catalog {
                 break;
             }
         }
-
         return result;
     }
 
@@ -253,4 +257,7 @@ public final class InMemoryCatalog implements Catalog {
         }
         return builder.toString();
     }
+
+
+
 }
