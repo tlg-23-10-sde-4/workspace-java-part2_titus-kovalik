@@ -37,8 +37,7 @@ public class EmployeeFactory {
             Double rate = Double.valueOf(inputMap.get("rate"));
             Double hours = Double.valueOf(inputMap.get("hours"));
             emp = new HourlyEmployee(name, hireDate, rate, hours);
-        }
-        else {
+        } else {
             Double salary = Double.valueOf(inputMap.get("salary"));
             emp = new SalariedEmployee(name, hireDate, salary);
         }

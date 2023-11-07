@@ -49,7 +49,6 @@ public class EmployeeFactoryTest {
     }
 
 
-
     /**
      * TASK: verify that passing seMap into your factory returns a SalariedEmployee, with all properties set.
      * to check an object's type, you can use instanceof or check its Class object (preferred):
@@ -60,7 +59,7 @@ public class EmployeeFactoryTest {
 
         Employee emp = EmployeeFactory.createEmployee(seMap);
 
-         // exact type match, not an is-a match. EX: it can't pass executive
+        // exact type match, not an is-a match. EX: it can't pass executive
         //assertEquals(SalariedEmployee.class, emp.getClass());
 
 
@@ -98,6 +97,7 @@ public class EmployeeFactoryTest {
         assertEquals("Jackie", emp.getName());
 
         assertEquals(Date.valueOf("1990-08-24"), emp.getHireDate());
+
     }
 
 
