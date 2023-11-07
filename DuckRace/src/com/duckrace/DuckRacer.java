@@ -21,7 +21,6 @@ class DuckRacer {
         rewards.add(reward);
     }
 
-
     //Accessor methods
     public int getId() {
         return id;
@@ -46,7 +45,6 @@ class DuckRacer {
 //        return List.copyOf(rewards);
 
     }
-
 
     @Override
     public String toString() {
