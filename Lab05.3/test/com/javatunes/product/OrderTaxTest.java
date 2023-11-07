@@ -51,10 +51,10 @@ public class OrderTaxTest {
         order1.processCart(cart1);
         assertEquals(0, order1.getTax(), .001);
 
-    Order order2 = new Order("order-2", Location.ONLINE);
+        Order order2 = new Order("order-2", Location.ONLINE);
         order2.processCart(cart2);
-    assertEquals(0, order2.getTax(), .001);
-}
+        assertEquals(0, order2.getTax(), .001);
+    }
 
     @Test
     public void testTaxEuropeOrder() {

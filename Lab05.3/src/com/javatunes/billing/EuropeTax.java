@@ -26,7 +26,7 @@ public class EuropeTax implements TaxCalculator {
     public double taxAmount(double taxable) {
         double taxRate = vat * taxable;
         if (taxable > luxThreshold) {
-            taxRate += (taxable-luxThreshold)*luxuryTax;
+            taxRate += (taxable - luxThreshold) * luxuryTax;
         }
 
         return taxRate;

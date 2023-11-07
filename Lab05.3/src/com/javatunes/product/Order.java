@@ -33,6 +33,7 @@ public class Order {
         TaxCalculator calc = TaxCalculatorFactory.getTaxCalculator(getLocation());
         return calc.taxAmount(getCost());
     }
+
     /**
      * DONE:
      * get the items from the cart and iterate over them, print each item's product code
