@@ -78,4 +78,5 @@ public abstract class Employee
     public int hashCode() {
         return Objects.hash(getName(), getHireDate());
     }
+
 }
