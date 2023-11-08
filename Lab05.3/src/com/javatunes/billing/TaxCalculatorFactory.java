@@ -1,35 +1,37 @@
 package com.javatunes.billing;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TaxCalculatorFactory {
+
+    //private static final Map<Location, TaxCalculator> calcMap = new HashMap<>();
+
+    //THIS IS HOW TO MAKE A "CACHE" USING A MAP
+    //THIS IS AN EAGER CACHE
+    private static final Map<Location, TaxCalculator> calcMap = Map.of(
+            Location.ONLINE, new OnlineTax(),
+            Location.EUROPE, new EuropeTax(),
+            Location.USA,    new USATax()
+    );
 
     public TaxCalculatorFactory() {
     }
-    /*
-     * Consider implementing a "cache" of TaxCalculator objects.
-     *
-     * If I have not previously created the object (e.g. USATax) then
-     * I'll create it here (with "new") add it to my cache, and then return it.
-     *
-     * However, if my cache already contains it, then I just fetch it
-     * from the cache and return it - no need to create another one.
-     *
-     * Hint: you could use a simple Map<Location, TacCalculator> for the cache
-     * it would be a three row map, each row has a location | TaxCalculator
-     */
-
+    //THIS IS HOW TO MAKE A "CACHE" USING A MAP
+    //THIS IS A LAZY CACHE
     public static TaxCalculator getTaxCalculator(Location location) {
-        TaxCalculator calc = null;
-
-        switch (location) {
-            case USA:
-                calc = new USATax();
-                break;
-            case ONLINE:
-                calc = new OnlineTax();
-                break;
-            case EUROPE:
-                calc = new EuropeTax();
-        }
-        return calc;
+//        if (!calcMap.containsKey(location)) {
+//            switch (location) {
+//                case USA:
+//                    calcMap.put(location, new USATax());
+//                    break;
+//                case ONLINE:
+//                    calcMap.put(location, new OnlineTax());
+//                    break;
+//                case EUROPE:
+//                    calcMap.put(location, new EuropeTax());
+//            }
+//        }
+        return calcMap.get(location);
     }
 }
