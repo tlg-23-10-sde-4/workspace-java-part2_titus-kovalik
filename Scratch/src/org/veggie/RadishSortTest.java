@@ -24,23 +24,44 @@ class RadishSortTest {
         dump(radishes);
         System.out.println();
 
-        System.out.println("color via color comparator");
-        radishes.sort(new RadishColorComparator());
+        System.out.println("color via anonymous comparator<Radish> class");
+        //radishes.sort(new RadishColorComparator());
+        radishes.sort(new Comparator<Radish>() {
+            @Override
+            public int compare(Radish r1, Radish r2) {
+                return r1.getColor().compareTo(r2.getColor());
+            }
+        });
         dump(radishes);
         System.out.println();
 
         System.out.println("Sprouts via SproutsComparator");
-        radishes.sort(new RadishSproutComparator());
+        //radishes.sort(new RadishSproutComparator());
+        radishes.sort(new Comparator<Radish>() {
+            @Override
+            public int compare(Radish r1, Radish r2) {
+                return Integer.compare(r1.getSprouts() , r2.getSprouts());
+            }
+        });
         dump(radishes);
         System.out.println();
 
+
+        System.out.println("Sort via tail length");
+        radishes.sort(new Comparator<Radish>() {
+
+            @Override
+            public int compare(Radish r1, Radish r2) {
+                return Double.compare(r1.getTailSize(), r2.getTailSize());
+            }
+        });
+        dump(radishes);
+        System.out.println();
     }
 
     private static void dump(List<Radish> radishes) {
         for (Radish radish : radishes) {
             System.out.println(radish);
-
-
         }
     }
 }
