@@ -8,11 +8,11 @@ import java.util.*;
 /*
  * This is a lookup table of ids to student names.
  * When a duck wins for the first time, we need to find out who that is.
- * This lookup table could be hardcoded with the data, or we could read the data 
+ * This lookup table could be hardcoded with the data, or we could read the data
  * in from a file, so that no code changes would need to be made for each cohort.
  *
  * Map<Integer,String> studentIdMap;
- * 
+ *
  * Integer    String
  * =======    ======
  *    1       John
@@ -21,7 +21,7 @@ import java.util.*;
  *    4       Armando
  *    5       Sheila
  *    6       Tess
- * 
+ *
  *
  * We also need a data structure to hold the results of all winners.
  * This data structure should facilitate easy lookup, retrieval, and storage.
@@ -38,11 +38,14 @@ import java.util.*;
  *   17       17    Dom        1    DEBIT_CARD
  */
 
-class Board {
+public class Board {
     //Fields
-    private final Map<Integer,String> studentIdMap = loadStudentIdMap();
-    private final Map<Integer,DuckRacer> racerMap  = new TreeMap<>();
+    private final Map<Integer, String> studentIdMap = loadStudentIdMap();
+    private final Map<Integer, DuckRacer> racerMap = new TreeMap<>();
 
+    public int maxId() {
+        return studentIdMap.size();
+    }
     /*
      * Update the board (racerMap) by making a DuckRacer "win"
      *
@@ -53,8 +56,7 @@ class Board {
         DuckRacer racer = null;
         if (racerMap.containsKey(id)) {
             racer = racerMap.get(id);
-        }
-        else {
+        } else {
             racer = new DuckRacer(id, studentIdMap.get(id));
             racerMap.put(id, racer);
         }
@@ -62,9 +64,6 @@ class Board {
     }
 
     //TESTING PURPOSES ONLY
-    void dumpStudentIdMap() {
-        System.out.println(studentIdMap);
-    }
 
     /*
      * TODO: render the board like you see everyday.
@@ -80,11 +79,18 @@ class Board {
      */
 
     public void show() {
-        Collection<DuckRacer> racers = racerMap.values();
+        if (racerMap.isEmpty()) {
+            System.out.println("   The race is yet to begin");
+        } else {
+            Collection<DuckRacer> racers = racerMap.values();
 
-        for (DuckRacer racer : racers) {
-            System.out.printf("%s   %s   %s   %s\n",
-                    racer.getId(), racer.getName(), racer.getWins(), racer.getRewards());
+            for (DuckRacer racer : racers) {
+                System.out.println("          DUCK RACERS");
+                System.out.println("==================================");
+                System.out.printf("%s   %s   %s   %s\n",
+                        racer.getId(), racer.getName(), racer.getWins(), racer.getRewards());
+                System.out.println();
+            }
         }
     }
 
@@ -100,7 +106,6 @@ class Board {
             List<String> lines = Files.readAllLines(Path.of("conf/student-ids.csv"));
             for (String line : lines) {
                 String[] tokens = line.split(","); // tokens[0] is "1" and tokens[1] is "Aaron"
-
                 idMap.put(Integer.valueOf(tokens[0]), tokens[1]);
             }
         } catch (IOException e) {
