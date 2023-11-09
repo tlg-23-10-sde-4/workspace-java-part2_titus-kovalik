@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Department {
     private String name;
     private String location;
-    private Collection<Employee> employees = new ArrayList<>();
+    private final Collection<Employee> employees = new ArrayList<>();
 
     public Department() {
     }
@@ -25,27 +25,21 @@ public class Department {
     }
 
     public void listEmployees() {
-        for (Employee emp : employees) {
-            System.out.println(emp);
-        }
+        employees.forEach(emp -> System.out.println(emp));
+
     }
 
     public void workEmployees() {
-        for (Employee emp : employees) {
-            emp.work();
+        employees.forEach(emp -> emp.work());
         }
-    }
 
     /**
      * DONE: implement payEmployees() method by calling pay() on each Employee
      * it will look similar to the workEmployees() method above
      */
     public void payEmployees() {
-        // DONE
-        for (Employee emp : employees) {
-            emp.pay();
+        employees.forEach(emp -> emp.pay());
         }
-    }
 
     // helper method to add an Employee to the collection
     public void addEmployee(Employee emp) {
