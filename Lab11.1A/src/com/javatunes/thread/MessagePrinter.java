@@ -8,12 +8,17 @@
 package com.javatunes.thread;
 
 // TODO: extend the Thread class
-public class MessagePrinter {
-  private String message;
-  
+public class MessagePrinter extends Thread {
+
+  private final String message;
+  private final int iterations = 10;
+  private final int sleepInterval = 1000;
+
   public MessagePrinter(String message) {
     this.message = message;
     // TODO: set the thread name [important when debugging]
+    Thread violets = new Thread("violets");
+
   }
   
   /**
@@ -25,7 +30,15 @@ public class MessagePrinter {
    * The sleep() method throws InterruptedException, which you need to catch.
    * You can either leave the catch block empty, or print the exception to stdout.
    */
+  @Override
   public void run() {
-    
+    for (int i = 0; i < iterations; i++) {
+      System.out.println(message);
+      try {
+        Thread.sleep(sleepInterval);
+      } catch (InterruptedException e) {
+        System.out.println("broked");
+      }
+    }
   }
 }
