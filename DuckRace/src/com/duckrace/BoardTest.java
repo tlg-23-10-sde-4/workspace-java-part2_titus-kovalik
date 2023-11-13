@@ -4,7 +4,7 @@ import static com.duckrace.Reward.*;
 
 class BoardTest {
     public static void main(String[] args) {
-        Board board = new Board();
+        Board board = Board.getInstance();
 
         board.update(4, DEBIT_CARD);
         board.update(4, DEBIT_CARD);
