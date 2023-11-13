@@ -9,6 +9,7 @@
 package com.javatunes.catalog;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
@@ -64,14 +65,10 @@ public final class InMemoryCatalog implements Catalog {
      * For example, Madonna's first album is simply titled, "Madonna."
      */
         public Collection<MusicItem> findSelfTitled() {
-            Collection<MusicItem> result = new ArrayList<>();
-            for (MusicItem item : catalogData) {
-                if (item.getTitle().equals(item.getArtist())) {
-                    result.add(item);
-                }
-            }
+            return catalogData.stream()
+                    .filter(item -> item.getTitle().equals(item.getArtist()))
+                    .collect(Collectors.toList());
 
-            return result;
         }
 
     /**
@@ -108,12 +105,8 @@ public final class InMemoryCatalog implements Catalog {
      * TASK: determine average price of our low-cost, extensive catalog of music.
      */
     public double averagePrice() {
-        double avPrice = 0;
-        Collection<MusicItem> result = new ArrayList<>();
-        for (MusicItem item : catalogData) {
-            avPrice += item.getPrice();
-        }
-        return avPrice/catalogData.size();
+        return catalogData.stream()
+                .collect(Collectors.averagingDouble(MusicItem::getPrice));
     }
 
 
