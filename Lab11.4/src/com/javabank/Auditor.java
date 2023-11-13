@@ -9,8 +9,8 @@ package com.javabank;
 
 public class Auditor
 extends Thread {
-  private Account acct1;
-  private Account acct2;
+  private final Account acct1;
+  private final Account acct2;
 
   public Auditor(Account acct1, Account acct2) {
     this.acct1 = acct1;

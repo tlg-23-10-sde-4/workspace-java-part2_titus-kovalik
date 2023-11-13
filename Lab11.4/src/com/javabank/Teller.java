@@ -9,8 +9,8 @@ package com.javabank;
 
 public class Teller
 extends Thread {
-  private Account acct1;
-  private Account acct2;
+  private final Account acct1;
+  private final Account acct2;
 
   public Teller(Account acct1, Account acct2) {
     this.acct1 = acct1;

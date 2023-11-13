@@ -11,9 +11,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Account {
-  private String name;
+  private final String name;
   private int balance;
-  private Lock lock = new ReentrantLock();
+  private final Lock lock = new ReentrantLock();
   
   public Account(String name, int balance) {
     this.name = name;
