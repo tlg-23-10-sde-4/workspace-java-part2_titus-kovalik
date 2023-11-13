@@ -7,24 +7,25 @@
  */
 package com.javatunes.thread;
 
-// DONE: extend the Thread class
-public class MessagePrinter extends Thread {
-  private String message;
-  private int interval = 500;  // default value
-  
+// TODO: extend the Thread class
+public class MessagePrinter implements Runnable {
+
+  private final String message;
+  private final int iterations = 10;
+  private final int sleepInterval = 1000;
+
   public MessagePrinter(String message) {
     this.message = message;
-    // DONE: set the thread name [important when debugging]
-    setName("Message Printer");
+    // TODO: set the thread name [important when debugging]
+    Thread violets = new Thread("violets");
+
   }
-  
-  public MessagePrinter(String message, int interval) {
-    this(message);
-    this.interval = interval;
-  }
-  
+
+//  public MessagePrinter(String message, int i, int i1) {
+//  }
+
   /**
-   * DONE: implement run() as follows:
+   * TODO: implement run() as follows:
    * It should loop 10 times, printing the 'message' field to stdout,
    * then pausing for some interval (in millis) that you choose.
    * 
@@ -34,12 +35,12 @@ public class MessagePrinter extends Thread {
    */
   @Override
   public void run() {
-    for (int i = 0; i < 10; i++) {
-      System.out.println(getName() + ": " + message);
+    for (int i = 0; i < iterations; i++) {
+      System.out.println(Thread.currentThread() + ":" + message);
       try {
-        Thread.sleep(interval);
-      }
-      catch (InterruptedException ignored) {
+        Thread.sleep(sleepInterval);
+      } catch (InterruptedException e) {
+        System.out.println("broked");
       }
     }
   }
