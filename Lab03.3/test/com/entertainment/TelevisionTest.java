@@ -81,9 +81,4 @@ public class TelevisionTest{
         tv.setVolume(0);
         assertEquals(0, tv.getVolume());
     }
-
-//    @Override
-//    public int compareTo(Television o) {
-//        return 0;
-//    }
 }

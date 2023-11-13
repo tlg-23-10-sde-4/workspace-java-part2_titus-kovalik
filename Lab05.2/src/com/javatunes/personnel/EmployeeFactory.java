@@ -24,7 +24,6 @@ public class EmployeeFactory {
     public static Employee createEmployee(Map<String, String> inputMap) throws IllegalArgumentException {
         // return value
         Employee emp = null;
-
         String type = inputMap.get("type");
         if (!"SE".equals(type) && !"HE".equals(type)) {
             throw new IllegalArgumentException("Unknown employee type:" + type + ". Must be SE or HE");

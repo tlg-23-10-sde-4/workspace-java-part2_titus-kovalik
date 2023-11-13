@@ -59,8 +59,7 @@ public class Television
         return this.volume;
     }
 
-    public void setVolume(int volume)
-            throws IllegalArgumentException {
+    public void setVolume(int volume) throws IllegalArgumentException {
         if (volume >= MIN_VOLUME && volume <= MAX_VOLUME) {
             this.volume = volume;
         } else {
