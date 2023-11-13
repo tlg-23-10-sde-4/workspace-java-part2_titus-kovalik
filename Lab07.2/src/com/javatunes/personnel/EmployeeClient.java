@@ -16,5 +16,4 @@ class EmployeeClient {
         double elapsed = (end - begin) / 1_000_000.0;
         System.out.println(elapsed + "ms");
     }
-
 }
